@@ -40,6 +40,7 @@ body {
     animation-duration: 5s;
     animation-fill-mode: forwards;
     animation-delay: 1s;
+    z-index: 99;
     
 }
 #curtain-right{
@@ -58,6 +59,8 @@ body {
     background-size: 100vh;
     background-repeat: no-repeat;
     background-position: left;  
+
+    z-index: 99;
 }
 
 #background {
@@ -138,20 +141,43 @@ body {
   transition-delay: 300ms;
 }
 
-#low-op-circle{
-    width: 700px;
-    height: 700px;
-    background-color: rgba(110, 110, 110, 0.438);
+
+#circle-container{
+    width: 800px;
+    height: 800px;
+    border: 2px dashed black;
     border-radius: 50%;
+    margin: 700px auto 0 auto;
+    transform: scale(0.8);
     
-    margin: 100px auto;
+    
 }
+#circle-border{
+    width: 600px;
+    height: 600px;
+    border: 1px solid black;
+    margin-top: 100px;
+    margin-left: 100px;
+    border-radius: 50%;
+    background-image: url("../images/cat-live.jpg");
+    background-size: 1000px;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: scale(1.1);
+    z-index: -100;
+    
+
+}
+#low-op-circle{ 
+}
+
+
 
 #info-section{
     width: 80%;
-    margin: 100px auto;
+    margin: 50px auto;
     height: 2000px;
-    background-color: rgba(0, 255, 255, 0.199);
+    background-color: rgba(231, 255, 255, 0.37);
     border: 1px dotted black;
 
 }   
@@ -210,7 +236,7 @@ body {
         transform: scale(1);
     }
     to {
-        transform: scale(1.5);
+        transform: scale(1.1);
     }
 }
 
