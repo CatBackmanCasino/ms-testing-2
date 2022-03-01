@@ -8,38 +8,86 @@ body {
   font-family: league gothic;
   color: white;
   text-align: center;
-  background: url("https://previews.123rf.com/images/jessinono/jessinono1801/jessinono180100003/92928418-bokeh-nel-fondo-pastello-dell-arcobaleno-astratto-di-pendenza-decorazione-luminosa-per-design-felice.jpg");
- 
 }
 
-#cover{
+#fade-in-fx{
+    background-color: black;
+    position: fixed;
     height: 100%;
     width: 100%;
-    position: absolute;
-    background-color: azure;
-    top: 0px;
+    z-index: 100;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 2s, opacity 2s linear;
+      
+      
+}
 
-    animation-name: vanish;
+#curtain-left{
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    background-image: url("../images/joker-left.png");
+    top: 0px;
+    background-size: 100vh;
+    background-repeat: no-repeat;
+    background-position: right;
+    
+    
+   
+
+    animation-name: slide-to-left;
     animation-duration: 5s;
     animation-fill-mode: forwards;
     animation-delay: 1s;
     
-    visibility: hidden;
-    opacity: 0%;
-    transition: visibility 3s ease 1s, opacity 3s;
-    
+}
+#curtain-right{
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    left: 50%;
+    background-image: url("../images/joker-right.png");
+    top: 0px;
+
+    animation-name: slide-to-right;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
+
+    background-size: 100vh;
+    background-repeat: no-repeat;
+    background-position: left;  
 }
 
-#intro-text {
-    /* color: black;
-    width: 10%;
-    text-align: center;
-    height: 10%;
-    padding: 45% 0; */
+#background {
+    background-image: url("../images/eric.png");
+    position: fixed;
+    margin-top: -200px;
+    height: 300%;
+    width: 100%;
+    z-index: -1000;
+    background-position: top;
+    background-repeat: no-repeat;
+    transform: scale(1.1);
+
+    opacity: 1;
+    transition: opacity 5s linear;
+
+    animation-name: slow-zoom;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+
 }
 
-
-
+#header {
+    line-height: 100px;
+    height: 100px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: rgba(0, 255, 255, 0.212);
+}
 
 #container{
   width: 100%;
@@ -48,12 +96,25 @@ body {
 
 }
 .grid-items{
+  text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.39);
   text-transform: uppercase;
   height: 100px;
-  background: rgba(245, 40, 145, 0.75);
+  background: rgba(84, 249, 255, 0.192);
   transition: 1s;
   margin: 0;
+  padding-top: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.281);
 }
+
+.grid-items-second-line{
+    text-transform: uppercase;
+    height: 100px;
+    background: rgba(170, 207, 255, 0.13);
+    transition: 1s;
+    margin: 0;
+    padding-top: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.281);
+  }
 
 .hidden-when-nohover{
   opacity: 0;
@@ -63,7 +124,7 @@ body {
   text-transform: none;
 }
 
-.grid-items:hover {
+.grid-items:hover, .grid-items-second-line:hover {
   opacity: 100%;
   height: 400px;
   background-color: rgba(255, 255, 255, 0.36);
@@ -77,14 +138,86 @@ body {
   transition-delay: 300ms;
 }
 
+#low-op-circle{
+    width: 700px;
+    height: 700px;
+    background-color: rgba(110, 110, 110, 0.438);
+    border-radius: 50%;
+    
+    margin: 100px auto;
+}
+
+#info-section{
+    width: 80%;
+    margin: 100px auto;
+    height: 2000px;
+    background-color: rgba(0, 255, 255, 0.199);
+    border: 1px dotted black;
+
+}   
+
+#info-section h1{
+    font-size: 500%;
+    text-transform: uppercase;
+    color: antiquewhite;
+    text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.39);
+}
+#info-section hr{
+    color:black;
+    border: 5px dashed rgba(0, 0, 0, 0.322);
+    width: 70%;
+    margin: auto;
+    border-radius: 10px;
+}
+
+#footer {
+    line-height: 100px;
+    height: 100px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: rgba(0, 255, 255, 0.212);
+}
+
+
 /* animations */
-/* @keyframes vanish {
+@keyframes slide-to-left {
     from{
-        opacity: 100%;
+        right: 50%;
+        background-color: black;
     }
     to{
-        opacity: 0%
-        
+        right: 100%;
+        background-color: brown;   
     }
     
-} */
+}
+
+@keyframes slide-to-right {
+    from{
+        left: 50%;
+        background-color: black;
+    }
+    to{
+        left: 100%;
+        background-color: brown;   
+    }
+    
+}
+
+@keyframes slow-zoom{
+    from{ 
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.5);
+    }
+}
+
+/* media queries */
+@media screen and (max-width: 900px) {
+    #container{
+        grid-template-columns: 1fr;
+    }
+    
+}
